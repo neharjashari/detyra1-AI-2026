@@ -1,0 +1,4 @@
+# Kodi përdor vetëm librarinë standarde të Python (>= 3.10).
+# Për testet:
+pytest>=7
+# Opsionale: Graphviz (programi `dot`) për të rigjeneruar figurat SVG të pemëve.

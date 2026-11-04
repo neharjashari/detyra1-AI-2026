@@ -1,0 +1,6 @@
+# Sudoku - niveli MEDIUM (mesatar): 26 deri në 29 dhëna.
+# Formati: <emri>: <81 karaktere>, '.' ose '0' = qelizë bosh.
+# Burimi: dy rrjetat e para të nivelit medium nga Project Euler, problemi 96
+# (https://projecteuler.net/problem=96, skedari p096_sudoku.txt).
+euler-03: ......9.7...42.18....7.5.261..9.4....5.....4....5.7..992.1.8....34.59...5.7......
+euler-07: .43.8.25.6.............1.949....4.7....6.8....1.2....382.5.............5.34.9.71.

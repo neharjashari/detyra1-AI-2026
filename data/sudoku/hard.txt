@@ -1,0 +1,8 @@
+# Sudoku - niveli HARD (i vështirë): 25 dhëna ose më pak.
+# Formati: <emri>: <81 karaktere>, '.' ose '0' = qelizë bosh.
+# Burimi: dy rrjetat e para të nivelit hard nga Project Euler, problemi 96
+# (https://projecteuler.net/problem=96, skedari p096_sudoku.txt), dhe enigma e
+# Arto Inkala (2012), e njohur në media si "Sudoku më e vështirë në botë".
+euler-06: 1..92....524.1...........7..5...81.2.........4.27...9..6...........3.945....71..6
+euler-26: 5..4...6...9...8..64..2.........1..82.8...5.17..5.........9..84..3...6...6...3..2
+inkala-2012: 8..........36......7..9.2...5...7.......457.....1...3...1....68..85...1..9....4..

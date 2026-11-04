@@ -43,7 +43,7 @@ detyra1/
 Kërkohet **Python ≥ 3.10**. Kodi nuk ka varësi të jashtme.
 
 ```bash
-git clone <url-e-repository-t> detyra1 && cd detyra1
+git clone https://github.com/neharjashari/detyra1-AI-2026.git detyra1 && cd detyra1
 python3 -m venv .venv && source .venv/bin/activate     # opsionale
 pip install -r requirements-dev.txt                    # vetëm për testet (pytest)
 ```
@@ -64,7 +64,8 @@ python -m uninformed_search golfers -w 10 --landscape    # madhësia e hapësir�
 # Problemi 2: Sudoku
 python -m uninformed_search sudoku                       # të gjitha nivelet
 python -m uninformed_search sudoku --level hard
-python -m uninformed_search sudoku --puzzle "<81 karaktere, . për bosh>"
+# enigmë e dhënë si 81 karaktere, rresht pas rreshti ('.' ose '0' = qelizë bosh)
+python -m uninformed_search sudoku --puzzle "..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3.."
 
 # Problemi 3: Latin Square
 python -m uninformed_search latin -n 5                   # IDDFS

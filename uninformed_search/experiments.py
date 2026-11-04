@@ -39,7 +39,7 @@ def fmt_time(seconds: float) -> str:
 def golfers_report() -> str:
     parts = [header("Rezultatet - Problemi 1: Social Golfers")]
 
-    parts.append("## 1. Madhësia e hapësirës së kërkimit për 32 lojtarë (8 grupe me 4), w javë\n")
+    parts.append("## 1. Madhësia e hapësirës së kërkimit për 32 lojtarë (8 grupe me nga 4), w javë\n")
     rows = []
     for w in range(1, 11):
         land = golf.landscape(8, 4, w)
@@ -53,7 +53,7 @@ def golfers_report() -> str:
         )
     parts.append(
         table(
-            ["w", "32^(32·w): çdo vend çdo lojtar", "(32!)^w: çdo javë permutacion", "P^w: çdo javë ndarje"],
+            ["w", "32^(32·w): çdo slot çdo lojtar", "(32!)^w: çdo javë permutacion", "P^w: çdo javë ndarje"],
             rows,
         )
     )
@@ -153,7 +153,7 @@ def sudoku_report() -> str:
                 "dhëna",
                 "bosh (k)",
                 "9^k",
-                "rreshtat permutacione",
+                "çdo rresht permutacion",
                 "statusi",
                 "nyje të gjeneruara",
                 "nyje të zgjeruara",
@@ -285,7 +285,7 @@ def trees_report(img_dir: Path) -> str:
     parts.append(
         "\n## Rotating Workforce Scheduling\n\n"
         f"* Veprime për nivel (ditë): {rws['actions_per_level']}; gjethe të pemës kolonë-pas-kolone: "
-        f"{rws['leaves_column_wise']:,}; përfaqësim qelizë-pas-qelize: 3^21 = {rws['cell_wise']:,}.\n"
+        f"{rws['leaves_column_wise']:,}; reprezentim qelizë-pas-qelize: 3^21 = {rws['cell_wise']:,}.\n"
     )
     return "\n".join(parts) + "\n"
 

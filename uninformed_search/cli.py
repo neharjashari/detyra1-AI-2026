@@ -44,7 +44,7 @@ def _puzzle(value: str) -> str:
     except ValueError:
         raise argparse.ArgumentTypeError("duhen saktësisht 81 qeliza (1-9, 0 ose . për bosh)") from None
     if sudoku.has_conflicts(grid):
-        raise argparse.ArgumentTypeError("dhënat përsërisin një shifër në rresht, kolonë ose bllok")
+        raise argparse.ArgumentTypeError("dhënat përsërisin një shifër në rresht, kolonë ose kuti")
     return grid
 
 

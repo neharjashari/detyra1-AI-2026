@@ -25,5 +25,5 @@ Numri i nyjeve është deterministik për ekzekutimet që mbarojnë; për rresht
 
 ## Rotating Workforce Scheduling
 
-* Veprime për nivel (ditë): [6, 6, 6, 6, 6, 6, 6]; gjethe të pemës kolonë-pas-kolone: 279,936; përfaqësim qelizë-pas-qelize: 3^21 = 10,460,353,203.
+* Veprime për nivel (ditë): [6, 6, 6, 6, 6, 6, 6]; gjethe të pemës kolonë-pas-kolone: 279,936; reprezentim qelizë-pas-qelize: 3^21 = 10,460,353,203.
 

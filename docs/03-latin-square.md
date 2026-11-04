@@ -15,7 +15,7 @@ Rezultatet: [`results/03-latin-square.md`](../results/03-latin-square.md)
 
 Hyrja është `n`. Duhet një matricë `n × n` me vlera nga `1` deri në `n`.
 
-**Kufizimet (të gjitha të forta):**
+**Kufizimet** (të gjitha janë *hard constraints*):
 
 * në çdo rresht vlerat janë të ndryshme;
 * në çdo kolonë vlerat janë të ndryshme.
@@ -37,7 +37,7 @@ Në kod (`latin_square.py`):
 * `in_row[i]` dhe `in_column[j]`: bashkësitë e vlerave të përdorura në rreshtin `i` dhe kolonën `j`,
   që kontrolli "a lejohet vlera `v`?" të jetë i shpejtë.
 
-Qelizat plotësohen rresht pas rreshti: qeliza numër `d` është `(d / n, d mod n)`.
+Qelizat plotësohen rresht pas rreshti: qeliza numër `d` është `(⌊d / n⌋, d mod n)`.
 
 ## 3. Funksioni objektiv
 

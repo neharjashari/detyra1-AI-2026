@@ -16,10 +16,10 @@ Rezultatet: [`results/01-social-golfers.md`](../results/01-social-golfers.md)
 Instanca e përgjithshme shënohet **g-p-w**: `n = g·p` lojtarë luajnë çdo javë në `g` grupe me nga
 `p` lojtarë, për `w` javë. Detyra kërkon **8-4-w**: 32 lojtarë, 8 grupe me nga 4.
 
-**Kufizimet (të gjitha të forta, nuk ka kufizime të buta):**
+**Kufizimet** (të gjitha janë *hard constraints*; nuk ka *soft constraints*):
 
-* **C1:** çdo javë secili lojtar luan saktësisht një herë (grupet e një jave e ndajnë grupin e
-  lojtarëve pa mbetje dhe pa përsëritje);
+* **C1:** çdo javë secili lojtar luan saktësisht një herë (grupet e një jave përmbajnë të gjithë
+  lojtarët, secilin vetëm një herë);
 * **C2:** dy lojtarë luajnë në të njëjtin grup më së shumti një herë gjatë të gjitha javëve.
 
 **Kufiri i sipërm për numrin e javëve.** Çdo javë një lojtar takon `p − 1 = 3` lojtarë të rinj,
@@ -36,7 +36,7 @@ janë të pamundura, ndërsa një orar konkret me 10 javë njihet në literatur�
 
 | Elementi | Përmbajtja |
 |---|---|
-| **Variablat** | `x[t][j][k]`: lojtari në javën `t`, grupin `j`, vendin `k` (`w · g · p = 32·w` variabla) |
+| **Variablat** | `x[t][j][k]`: lojtari në javën `t`, grupin `j`, pozicionin `k` (`w · g · p = 32·w` variabla) |
 | **Domeni** | `{0, 1, …, 31}` (numri i lojtarit) |
 | **Kufizimet** | C1 dhe C2 nga §1 |
 
@@ -51,7 +51,7 @@ Dy rregulla të thjeshta e bëjnë reprezentimin më të vogël pa humbur asnjë
 * brenda një grupi lojtarët shkruhen në rend rritës (grupi `{3, 0, 2, 1}` është i njëjtë me `{0, 1, 2, 3}`);
 * çdo grup fillon me lojtarin më të vogël që nuk luan ende atë javë (renditja e grupeve nuk ka rëndësi).
 
-Kështu çdo javë ndërtohet vetëm një herë si ndarje e lojtarëve në grupe. Shembulli i javës 1 në
+Kështu çdo javë ndërtohet vetëm një herë si ndarje (*partition*) e lojtarëve në grupe. Shembulli i javës 1 në
 detyrë (`0 1 2 3 | 4 5 22 23 | …`) është vetëm një nga ndarjet e mundshme; DFS jonë fillon me
 `0 1 2 3 | 4 5 6 7 | …`.
 
@@ -77,7 +77,7 @@ P = 32! / ((4!)^8 · 8!) = 59 287 247 761 257 140 625 ≈ 5.93 · 10^19
 
 | Reprezentimi | Formula | w = 5 | w = 10 |
 |---|---|---|---|
-| çdo vend merr çdo lojtar (as C1 nuk vlen) | `32^(32·w)` | 6.67e240 | 4.45e481 |
+| çdo slot merr çdo lojtar (as C1 nuk vlen) | `32^(32·w)` | 6.67e240 | 4.45e481 |
 | çdo javë është një permutacion i 32 lojtarëve (C1 vlen) | `(32!)^w` | 1.26e177 | 1.59e354 |
 | çdo javë është një ndarje në grupe (C1 vlen, pa renditje) | `P^w` | 7.32e98 | 5.37e197 |
 
@@ -89,25 +89,25 @@ hapësirë, prandaj kontrolli i kufizimeve gjatë ndërtimit (backtracking) ësh
 
 **Formulimi si problem kërkimi:**
 
-* **Gjendja:** orar i pjesshëm, i plotësuar vend pas vendi (java → grupi → vendi në grup);
+* **Gjendja:** orar i pjesshëm, i plotësuar slot pas sloti (një slot = java, grupi, pozicioni në grup);
 * **Gjendja fillestare:** orari bosh;
-* **Veprimi:** vendos një lojtar në vendin e radhës;
-* **Testi i qëllimit:** të gjitha `32·w` vendet janë plotësuar (atëherë `f = 0`);
+* **Veprimi:** vendos një lojtar në slotin e radhës;
+* **Testi i qëllimit:** të gjitha `32·w` slotet janë plotësuar (atëherë `f = 0`);
 * **Thellësia e zgjidhjes:** `d = 32·w` (p.sh. 160 për 5 javë).
 
 **Backtracking:** një lojtar vendoset vetëm nëse nuk luan ende atë javë (C1) dhe nuk ka luajtur
-më parë me asnjë anëtar të grupit (C2). Nëse për një vend nuk ka asnjë lojtar të lejuar, nyja
-është *dead end*: DFS e zhbën vendosjen e fundit dhe provon lojtarin tjetër në vendin paraprak.
+më parë me asnjë anëtar të grupit (C2). Nëse për një slot nuk ka asnjë lojtar të lejuar, nyja
+është *dead end*: DFS e zhbën vendosjen e fundit dhe provon lojtarin tjetër në slotin paraprak.
 
 ```text
-DFS(vendi):
-    nëse të gjitha vendet janë plotësuar:  kthe SUKSES
-    kandidatët ← lojtarët e lejuar për këtë vend (C1, C2, rendi rritës në grup)
+DFS(sloti):
+    nëse të gjitha slotet janë plotësuar:  kthe SUKSES
+    kandidatët ← lojtarët e lejuar për këtë slot (C1, C2, rendi rritës në grup)
     për çdo lojtar në kandidatët (nga më i vogli):
         vendose lojtarin; shëno takimet e reja në met[]
-        nëse DFS(vendi + 1) == SUKSES:  kthe SUKSES
+        nëse DFS(sloti + 1) == SUKSES:  kthe SUKSES
         hiqe lojtarin; fshi takimet                      # backtracking
-    kthe DËSHTIM                                         # asnjë lojtar nuk funksionoi
+    kthe DËSHTIM                                         # asnjë lojtar nuk çoi në zgjidhje
 ```
 
 Për pyetjen "sa javë?" programi provon `w = 1, 2, 3, …` me DFS (`--max-weeks`) derisa DFS të
@@ -115,19 +115,19 @@ dështojë ose të arrijë kufirin e kohës.
 
 ## 6. Kompleksiteti
 
-* **Koha:** `O(b^d)`, me `d = 32·w` (thellësia) dhe `b ≤ 32` (lojtarë të mundshëm për një vend).
+* **Koha:** `O(b^d)`, me `d = 32·w` (thellësia) dhe `b ≤ 32` (lojtarë të mundshëm për një slot).
 * **Hapësira:** `O(d)`: DFS mban në kujtesë vetëm shtegun aktual (për 5 javë 160 nyje) plus
   bashkësitë `met`. Kjo është përparësia kryesore e DFS kundrejt BFS.
 * **Plotësia:** pema është e fundme, prandaj DFS është e plotë: nëse mbaron pa zgjidhje,
   instanca është e pamundur (p.sh. 2-4-2 në §7).
 * **Optimaliteti:** nuk ka rëndësi, sepse të gjitha zgjidhjet janë në të njëjtën thellësi.
 
-**Pse DFS ngec te java e 6-të.** Me lojtarët e provuar nga më i vogli, DFS ndërton javët 2-5 ashtu
+**Pse DFS ngec te java e 6-të.** Duke i provuar lojtarët nga më i vogli, DFS ndërton javët 2-5 ashtu
 që lojtarët 0-15 takohen vetëm me njëri-tjetrin dhe po ashtu lojtarët 16-31. Pas 5 javësh lojtari 0
 i ka takuar të gjithë lojtarët 1-15, prandaj në javën 6 duhet të luajë me tre lojtarë nga 16-31,
 por ata janë takuar tashmë të gjithë me njëri-tjetrin. Java 6 është e pamundur me këto 5 javë, por
 DFS e zbulon këtë vetëm thellë në pemë dhe duhet të provojë shumë kombinime të javëve 2-5 para
-se ta ndryshojë gabimin e hershëm. Kjo është dobësia e njohur e DFS me backtracking kronologjik:
+se ta ndryshojë gabimin e hershëm. Kjo është dobësia e njohur e DFS me backtracking kronologjik (*chronological backtracking*):
 një vendim i keq në fillim zbulohet shumë vonë.
 
 ## 7. Rezultatet
@@ -147,7 +147,7 @@ Nga `python -m uninformed_search bench` (kufiri 60 s); tabelat e plota janë në
 | 6 | kufiri i kohës | 55 530 000 | 26 096 103 | 60.0 |
 
 Rreshti për `w = 6` varet nga shpejtësia e kompjuterit: brenda 60 sekondave DFS gjeneron rreth 55
-milion nyje, nga të cilat gati gjysma janë dead ends, dhe nuk zbret më thellë se vendi 163 (java 6).
+milion nyje, nga të cilat gati gjysma janë dead ends, dhe nuk zbret më thellë se sloti 163 (java 6).
 
 **Instanca të vogla:**
 

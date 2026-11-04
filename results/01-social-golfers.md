@@ -3,9 +3,9 @@
 Gjeneruar me `python -m uninformed_search bench` më 2026-11-04 (Python 3.14.6, Darwin arm64).
 Numri i nyjeve është deterministik për ekzekutimet që mbarojnë; për rreshtat 'limit' (kufiri i kohës 60 s) dhe për kohët rezultati varet nga shpejtësia e kompjuterit.
 
-## 1. Madhësia e hapësirës së kërkimit për 32 lojtarë (8 grupe me 4), w javë
+## 1. Madhësia e hapësirës së kërkimit për 32 lojtarë (8 grupe me nga 4), w javë
 
-| w | 32^(32·w): çdo vend çdo lojtar | (32!)^w: çdo javë permutacion | P^w: çdo javë ndarje |
+| w | 32^(32·w): çdo slot çdo lojtar | (32!)^w: çdo javë permutacion | P^w: çdo javë ndarje |
 |---|---|---|---|
 | 1 | 1.46e48 | 2.63e35 | 5.93e19 |
 | 2 | 2.14e96 | 6.92e70 | 3.51e39 |

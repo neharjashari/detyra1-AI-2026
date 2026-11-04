@@ -158,7 +158,7 @@ të hënën merr `D` të martën → `N → D`).
 
 ![RWS: pema e DFS deri te orari i parë i vlefshëm](img/rws_dfs.svg)
 
-DFS gjeneron 70 nyje (54 të palejuara) dhe gjen orarin në thellësinë 7. Shumë dead-end-e
+DFS gjeneron 70 nyje (54 të palejuara) dhe gjen orarin në thellësinë 7. Shumë *dead ends*
 shfaqen vetëm te dita e 7-të, kur kontrollohet edhe kalimi nga e diela e një rreshti te e hëna e
 rreshtit tjetër (cikli).
 

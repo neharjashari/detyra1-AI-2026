@@ -5,7 +5,7 @@ Numri i nyjeve është deterministik për ekzekutimet që mbarojnë; për rresht
 
 ## BFS me backtracking për të gjitha enigmat
 
-| niveli | enigma | dhëna | bosh (k) | 9^k | rreshtat permutacione | statusi | nyje të gjeneruara | nyje të zgjeruara | dead ends | radha max | koha (s) |
+| niveli | enigma | dhëna | bosh (k) | 9^k | çdo rresht permutacion | statusi | nyje të gjeneruara | nyje të zgjeruara | dead ends | radha max | koha (s) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | easy | euler-01 | 32 | 49 | 5.73e46 | 7.80e21 | solved | 928 | 928 | 274 | 146 | 0.001 |
 | easy | euler-02 | 30 | 51 | 4.64e48 | 5.62e23 | solved | 2,169 | 2,169 | 658 | 235 | 0.003 |

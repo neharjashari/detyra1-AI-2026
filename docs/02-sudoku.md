@@ -13,10 +13,10 @@ Rezultatet: [`results/02-sudoku.md`](../results/02-sudoku.md)
 
 ## 1. Modelimi
 
-Rrjeta 9×9 ka 9 rreshta, 9 kolona dhe 9 kuti 3×3, pra **27 njësi**. Disa qeliza janë të dhëna
-(*dhënat*), të tjerat duhet të plotësohen.
+Rrjeta 9×9 ka 9 rreshta, 9 kolona dhe 9 kuti 3×3, pra **27 njësi**. Disa qeliza janë të plotësuara që në
+fillim: këto janë *dhënat* (*givens*); të tjerat duhet të plotësohen.
 
-**Kufizimet (të gjitha të forta):**
+**Kufizimet** (të gjitha janë *hard constraints*):
 
 * çdo rresht, çdo kolonë dhe çdo kuti 3×3 përmban shifrat 1-9 secilën saktësisht një herë;
 * dhënat nuk ndryshohen.
@@ -67,7 +67,7 @@ Për një enigmë me `k` qeliza bosh:
 | Reprezentimi | Madhësia | euler-01 (`k = 49`) | inkala-2012 (`k = 60`) |
 |---|---|---|---|
 | çdo qelizë bosh merr çdo shifër | `9^k` | 5.73e46 | 1.80e57 |
-| çdo rresht plotësohet me një renditje të shifrave që i mungojnë | `Π (qeliza bosh në rresht)!` | 7.80e21 | 6.99e30 |
+| çdo rresht plotësohet me një permutacion të shifrave që i mungojnë | `Π (qeliza bosh në rresht)!` | 7.80e21 | 6.99e30 |
 | zgjidhje | 1 | 1 | 1 |
 
 Për krahasim, një rrjetë krejt bosh ka `9^81 ≈ 1.97 · 10^77` mbushje të mundshme, ndërsa rrjeta të
@@ -80,7 +80,7 @@ rrjetat: kufizimet duhet të kontrollohen gjatë ndërtimit, dhe kjo është det
 
 **Formulimi si problem kërkimi:**
 
-* **Gjendja:** rrjetë e pjesërisht e plotësuar, pa asnjë shifër të përsëritur;
+* **Gjendja:** rrjetë pjesërisht e plotësuar, pa asnjë shifër të përsëritur;
 * **Gjendja fillestare:** enigma;
 * **Veprimi:** shkruaj një shifër të lejuar në **qelizën e parë bosh** (rresht pas rreshti);
 * **Testi i qëllimit:** nuk ka më qeliza bosh;
